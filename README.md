@@ -93,7 +93,7 @@ La guia de configuracion explica como verificar estos archivos. Los checkpoints 
 
 Se recomienda Python 3.10 o superior, JupyterLab, NumPy, Matplotlib y PyTorch. Los notebooks de entrenamiento y muestreo usan GPU cuando `torch.cuda.is_available()` es verdadero, pero varias secciones conceptuales pueden ejecutarse en CPU.
 
-En otra maquina puede usarse cualquier kernel equivalente que tenga instaladas las dependencias de `requirements.txt`.
+En otra maquina puede usarse cualquier kernel equivalente que tenga instaladas las dependencias del archivo `requirements.txt`.
 
 ## Materiales de estudio
 
