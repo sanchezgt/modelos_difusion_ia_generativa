@@ -1,6 +1,6 @@
 # Modelos de difusion para IA generativa: Fundamentos
 
-Unidad ejecutable del Semillero GIDSYC para estudiar, mediante notebooks reproducibles, los fundamentos de los modelos de difusion generativa: ruido gaussiano, proceso directo, denoising, muestreo inverso, condicionamiento, classifier-free guidance, score matching, flow matching y espacios latentes.
+El curso presenta mediante notebooks reproducibles, los fundamentos de los modelos de difusion generativa: ruido gaussiano, proceso directo, denoising, muestreo inverso, condicionamiento, classifier-free guidance, score matching, flow matching y espacios latentes.
 
 El curso tiene proposito formativo y experimental. No busca entrenar un generador competitivo ni reemplaza el estudio de sistemas generativos modernos a gran escala. Su objetivo es formar criterio tecnico sobre los mecanismos matematicos y computacionales que hacen posible la generacion por difusion.
 
