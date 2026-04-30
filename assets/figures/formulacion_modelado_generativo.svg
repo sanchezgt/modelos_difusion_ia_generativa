@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Formulación matemática del modelado generativo</title>
+  <desc id="desc">Diagrama conceptual que conecta dataset, distribución de datos, ruido gaussiano, modelo generativo y distribución inducida.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#1f2a44"/>
+    </marker>
+    <marker id="arrow-soft" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#667085"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, Helvetica, sans-serif; fill: #1f2a44; }
+      .subtitle { font: 400 16px Arial, Helvetica, sans-serif; fill: #475467; }
+      .panel-title { font: 700 18px Arial, Helvetica, sans-serif; fill: #1f2a44; }
+      .body { font: 400 15px Arial, Helvetica, sans-serif; fill: #344054; }
+      .small { font: 400 13px Arial, Helvetica, sans-serif; fill: #667085; }
+      .math { font: 500 20px "Times New Roman", Times, serif; fill: #1f2a44; }
+      .math-small { font: 500 17px "Times New Roman", Times, serif; fill: #344054; }
+      .box { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.5; rx: 8; }
+      .soft-box { fill: #f8fafc; stroke: #d0d5dd; stroke-width: 1.5; rx: 8; }
+      .accent { fill: #eef4ff; stroke: #84adff; stroke-width: 1.5; rx: 8; }
+      .noise { fill: #fff4ed; stroke: #ff9c66; stroke-width: 1.5; rx: 8; }
+      .model { fill: #f0fdf4; stroke: #66c61c; stroke-width: 1.5; rx: 8; }
+      .arrow { stroke: #1f2a44; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .arrow-soft { stroke: #667085; stroke-width: 1.8; fill: none; marker-end: url(#arrow-soft); stroke-dasharray: 6 5; }
+      .dot { fill: #1f2a44; opacity: 0.75; }
+      .dot2 { fill: #2e90fa; opacity: 0.75; }
+      .noise-dot { fill: #f97066; opacity: 0.65; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="640" fill="#ffffff"/>
+
+  <text x="640" y="52" text-anchor="middle" class="title">Formulación matemática del modelado generativo</text>
+  <text x="640" y="80" text-anchor="middle" class="subtitle">Aprender a generar es aproximar una distribución de datos, no memorizar imágenes individuales.</text>
+
+  <!-- Dataset panel -->
+  <rect x="60" y="130" width="250" height="190" class="box"/>
+  <text x="185" y="160" text-anchor="middle" class="panel-title">Muestra empírica</text>
+  <text x="185" y="192" text-anchor="middle" class="math">D = {xᵢ}ᵢ₌₁ᴺ</text>
+  <text x="185" y="220" text-anchor="middle" class="small">observaciones finitas</text>
+  <text x="185" y="242" text-anchor="middle" class="small">imágenes 28 × 28</text>
+  <g transform="translate(100,260)">
+    <rect x="0" y="0" width="42" height="42" fill="#f2f4f7" stroke="#d0d5dd"/>
+    <path d="M7 31 L7 18 L21 8 L35 18 L35 31 Z M15 31 L15 23 L23 23 L23 31 M26 31 L26 22 L33 22 L33 31" stroke="#1f2a44" stroke-width="2" fill="none"/>
+    <rect x="54" y="0" width="42" height="42" fill="#f2f4f7" stroke="#d0d5dd"/>
+    <path d="M61 32 L61 20 L75 10 L89 20 L89 32 M68 32 L68 25 L74 25 L74 32 M80 25 L86 25 L86 31" stroke="#1f2a44" stroke-width="2" fill="none"/>
+    <rect x="108" y="0" width="42" height="42" fill="#f2f4f7" stroke="#d0d5dd"/>
+    <path d="M115 33 L115 19 L129 7 L143 19 L143 33 M121 20 L137 20 M124 33 L124 25 L132 25 L132 33" stroke="#1f2a44" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Data distribution panel -->
+  <rect x="400" y="130" width="250" height="190" class="accent"/>
+  <text x="525" y="160" text-anchor="middle" class="panel-title">Distribución de datos</text>
+  <text x="525" y="192" text-anchor="middle" class="math">xᵢ ~ p_data(x)</text>
+  <text x="525" y="220" text-anchor="middle" class="small">desconocida</text>
+  <text x="525" y="242" text-anchor="middle" class="small">solo observamos muestras</text>
+  <g transform="translate(435,257)">
+    <circle cx="22" cy="28" r="4" class="dot"/>
+    <circle cx="48" cy="18" r="4" class="dot"/>
+    <circle cx="72" cy="38" r="4" class="dot"/>
+    <circle cx="98" cy="24" r="4" class="dot"/>
+    <circle cx="124" cy="34" r="4" class="dot"/>
+    <circle cx="150" cy="18" r="4" class="dot"/>
+    <path d="M15 48 C40 5, 85 8, 115 32 S160 52, 180 18" stroke="#2e90fa" stroke-width="2" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- Model panel -->
+  <rect x="735" y="130" width="250" height="190" class="model"/>
+  <text x="860" y="160" text-anchor="middle" class="panel-title">Modelo generativo</text>
+  <text x="860" y="192" text-anchor="middle" class="math">p_θ(x) ≈ p_data(x)</text>
+  <text x="860" y="220" text-anchor="middle" class="small">distribución inducida</text>
+  <text x="860" y="242" text-anchor="middle" class="small">por un procedimiento de muestreo</text>
+  <g transform="translate(792,263)">
+    <rect x="0" y="0" width="136" height="42" fill="#ffffff" stroke="#98a2b3" rx="6"/>
+    <text x="68" y="27" text-anchor="middle" class="math-small">G_θ  o  sampler_θ</text>
+  </g>
+
+  <!-- Generated samples panel -->
+  <rect x="1030" y="130" width="190" height="190" class="box"/>
+  <text x="1125" y="160" text-anchor="middle" class="panel-title">Muestras nuevas</text>
+  <text x="1125" y="192" text-anchor="middle" class="math">x ~ p_θ(x)</text>
+  <text x="1125" y="220" text-anchor="middle" class="small">plausibles</text>
+  <text x="1125" y="242" text-anchor="middle" class="small">no copias exactas</text>
+  <g transform="translate(1064,262)">
+    <rect x="0" y="0" width="38" height="38" fill="#f2f4f7" stroke="#d0d5dd"/>
+    <path d="M6 29 L6 17 L19 7 L32 17 L32 29 M12 29 L12 23 L18 23 L18 29 M23 20 L29 20 L29 27" stroke="#1f2a44" stroke-width="2" fill="none"/>
+    <rect x="50" y="0" width="38" height="38" fill="#f2f4f7" stroke="#d0d5dd"/>
+    <path d="M56 30 L56 20 L69 9 L82 20 L82 30 M62 30 L62 24 L68 24 L68 30 M72 30 L72 22 L79 22 L79 30" stroke="#1f2a44" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Noise panel -->
+  <rect x="400" y="395" width="250" height="150" class="noise"/>
+  <text x="525" y="425" text-anchor="middle" class="panel-title">Distribución simple</text>
+  <text x="525" y="457" text-anchor="middle" class="math">z ~ N(0, I)</text>
+  <text x="525" y="484" text-anchor="middle" class="small">fácil de muestrear</text>
+  <g transform="translate(455,500)">
+    <circle cx="10" cy="10" r="3" class="noise-dot"/>
+    <circle cx="30" cy="22" r="3" class="noise-dot"/>
+    <circle cx="52" cy="8" r="3" class="noise-dot"/>
+    <circle cx="75" cy="24" r="3" class="noise-dot"/>
+    <circle cx="98" cy="12" r="3" class="noise-dot"/>
+    <circle cx="128" cy="20" r="3" class="noise-dot"/>
+  </g>
+
+  <!-- Objective panel -->
+  <rect x="735" y="395" width="390" height="150" class="soft-box"/>
+  <text x="930" y="425" text-anchor="middle" class="panel-title">Objetivo del curso</text>
+  <text x="930" y="459" text-anchor="middle" class="math">ruido simple → datos estructurados</text>
+  <text x="930" y="490" text-anchor="middle" class="body">Aprender una dinámica que transforme muestras</text>
+  <text x="930" y="514" text-anchor="middle" class="body">de una distribución conocida en muestras plausibles.</text>
+
+  <!-- Arrows -->
+  <path d="M310 225 H392" class="arrow"/>
+  <path d="M650 225 H727" class="arrow"/>
+  <path d="M985 225 H1022" class="arrow"/>
+  <path d="M650 470 C700 470, 705 330, 790 315" class="arrow-soft"/>
+  <path d="M860 320 V387" class="arrow-soft"/>
+
+  <!-- Captions -->
+  <text x="355" y="207" text-anchor="middle" class="small">hipótesis</text>
+  <text x="693" y="207" text-anchor="middle" class="small">aproximación</text>
+  <text x="1007" y="207" text-anchor="middle" class="small">muestreo</text>
+  <text x="690" y="380" text-anchor="middle" class="small">punto de partida</text>
+
+  <text x="640" y="604" text-anchor="middle" class="small">Idea central: el dataset es una muestra finita; el modelo generativo busca aproximar la distribución que produjo esas muestras.</text>
+</svg>

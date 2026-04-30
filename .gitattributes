@@ -1,0 +1,27 @@
+# Excluir archivos de control del ZIP generado por GitHub Releases.
+.gitattributes export-ignore
+.gitignore export-ignore
+
+# Fuentes de trabajo ignoradas en distribuciones comprimidas.
+*.tex export-ignore
+*.aux export-ignore
+*.log export-ignore
+*.out export-ignore
+*.toc export-ignore
+*.fls export-ignore
+*.fdb_latexmk export-ignore
+*.synctex.gz export-ignore
+
+# Fuentes Markdown que se entregan como PDF.
+syllabus.md export-ignore
+docs/*.md export-ignore
+
+# Archivos binarios principales.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp3 binary
+*.npz binary
+*.pt binary
+*.ipynb diff=off

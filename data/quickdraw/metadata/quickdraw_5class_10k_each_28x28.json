@@ -1,0 +1,31 @@
+{
+  "dataset": "QuickDraw bitmap",
+  "categories": [
+    "house",
+    "cat",
+    "tree",
+    "fish",
+    "apple"
+  ],
+  "samples_per_class_requested": 10000,
+  "samples_per_class_actual": {
+    "house": 10000,
+    "cat": 10000,
+    "tree": 10000,
+    "fish": 10000,
+    "apple": 10000
+  },
+  "num_samples": 50000,
+  "num_train": 45000,
+  "num_val": 5000,
+  "image_shape": [
+    28,
+    28
+  ],
+  "dtype": "uint8",
+  "seed": 20260424,
+  "val_fraction": 0.1,
+  "created_at_utc": "2026-04-24T15:10:00.272749+00:00",
+  "source": "https://github.com/googlecreativelab/quickdraw-dataset",
+  "license": "CC BY 4.0"
+}
