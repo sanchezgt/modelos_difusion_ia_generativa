@@ -4,6 +4,12 @@ Unidad ejecutable del Semillero GIDSYC para estudiar, mediante notebooks reprodu
 
 El curso tiene proposito formativo y experimental. No busca entrenar un generador competitivo ni reemplaza el estudio de sistemas generativos modernos a gran escala. Su objetivo es formar criterio tecnico sobre los mecanismos matematicos y computacionales que hacen posible la generacion por difusion.
 
+<p align="center">
+  <img src="assets/figures/formulacion_modelado_generativo.png" alt="Formulacion matematica del modelado generativo" width="900">
+</p>
+
+<p align="center"><em>Aprender a generar consiste en aproximar una distribucion de datos y muestrear desde ella.</em></p>
+
 ## Inicio rapido
 
 Abra esta carpeta como raiz del proyecto:
